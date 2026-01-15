@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Tickets</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+
+        /* Estilo dos Cartões (Box branca) */
+        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 400px; margin-bottom: 20px; }
+        h2 { color: #007bff; text-align: center; margin-top: 0; }
+
+        /* Estilo do Formulário */
+        input, select, textarea { width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button.btn-salvar { width: 100%; background-color: #28a745; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button.btn-salvar:hover { background-color: #218838; }
+
+        /* Estilo da Lista */
+        .ticket { background: #e9ecef; padding: 15px; margin: 10px 0; border-left: 5px solid #007bff; border-radius: 4px; position: relative; }
+        .status { font-weight: bold; font-size: 0.8em; color: #555; }
+
+        /* Botão de Lixeira */
+        .btn-delete { position: absolute; top: 10px; right: 10px; background: none; border: none; cursor: pointer; font-size: 1.2em; }
+        .btn-delete:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>➕ Novo Chamado</h2>
+    <form id="formTicket">
+        <label>Título:</label>
+        <input type="text" id="titulo" required placeholder="Ex: Computador não liga">
+
+        <label>Descrição:</label>
+        <textarea id="descricao" rows="3" placeholder="Detalhes do problema..."></textarea>
+
+        <label>Prioridade:</label>
+        <select id="prioridade">
+            <option value="BAIXA">Baixa</option>
+            <option value="MEDIA">Média</option>
+            <option value="ALTA">Alta</option>
+        </select>
+
+        <button type="submit" class="btn-salvar">Cadastrar</button>
+    </form>
+</div>
+
+<div class="card">
+    <h2>🎫 Meus Chamados</h2>
+    <div id="lista">Carregando...</div>
+</div>
+
+<script>
+    const API_URL = '/tickets';
+
+    // --- FUNÇÃO 1: Carregar Tickets (READ) ---
+    function carregarTickets() {
+        fetch(API_URL)
+            .then(response => response.json())
+            .then(data => {
+                const lista = document.getElementById('lista');
+                lista.innerHTML = ''; // Limpa a lista
+
+                if (data.length === 0) {
+                    lista.innerHTML = '<p style="text-align:center">Nenhum chamado aberto.</p>';
+                    return;
+                }
+
+                // Inverte a ordem para o mais novo aparecer primeiro
+                data.reverse().forEach(ticket => {
+                    const div = document.createElement('div');
+                    div.className = 'ticket';
+
+                    // Aqui montamos o HTML de cada ticket com o botão de excluir
+                    div.innerHTML = `
+                        <button class="btn-delete" onclick="deletarTicket(${ticket.id})" title="Excluir">🗑️</button>
+                        <strong>${ticket.titulo}</strong><br>
+                        <small>${ticket.descricao || 'Sem descrição'}</small><br>
+                        <span class="status">Prioridade: ${ticket.prioridade} | Status: ${ticket.status}</span>
+                    `;
+                    lista.appendChild(div);
+                });
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                document.getElementById('lista').innerHTML = 'Erro ao carregar tickets.';
+            });
+    }
+
+    // --- FUNÇÃO 2: Criar Ticket (CREATE) ---
+    document.getElementById('formTicket').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede a página de recarregar
+
+        const dados = {
+            titulo: document.getElementById('titulo').value,
+            descricao: document.getElementById('descricao').value,
+            prioridade: document.getElementById('prioridade').value
+        };
+
+        fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+        }).then(response => {
+            if (response.ok) {
+                carregarTickets(); // Atualiza a lista
+                document.getElementById('formTicket').reset(); // Limpa o form
+            } else {
+                alert("Erro ao salvar!");
+            }
+        });
+    });
+
+    // --- FUNÇÃO 3: Deletar Ticket (DELETE) ---
+    function deletarTicket(id) {
+        if (confirm("Tem certeza que quer apagar esse chamado?")) {
+            fetch(`${API_URL}/${id}`, {
+                method: 'DELETE'
+            }).then(() => {
+                carregarTickets(); // Atualiza a lista após apagar
+            });
+        }
+    }
+
+    // Chama a função ao abrir a página
+    carregarTickets();
+</script>
+</body>
+</html>
