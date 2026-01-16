@@ -123,5 +123,5 @@ Você pode rodar via terminal:
 
 Ou execute a classe DemoApplication.java diretamente pela sua IDE.
 
-- Acesse no navegador
+## Acesse no navegador
 Abra o navegador e acesse a página de login: http://localhost:8080/
