@@ -110,9 +110,10 @@ cd demo
 No arquivo src/main/resources/application.properties, ajuste o usuário e senha do seu PostgreSQL:
 
 Properties
-
+```bash
 spring.datasource.username=seu_usuario_aqui
 spring.datasource.password=sua_senha_aqui
+```
 
 - Execute a aplicação
 Você pode rodar via terminal:
