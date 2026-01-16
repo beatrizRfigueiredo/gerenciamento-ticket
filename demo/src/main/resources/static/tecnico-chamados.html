@@ -4,177 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Chamados - Técnico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, #f8a57b, #f58e66);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8a57b, #f58e66);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .cartao-tecnico {
-        background-color: #fff;
-        border-radius: 20px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        display: flex;
-        max-width: 1100px;
-        width: 100%;
-        min-height: 650px;
-        overflow: hidden;
-    }
+        .cartao-tecnico {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            min-height: 650px;
+            overflow: hidden;
+        }
 
-    .area-lista {
-        flex: 1;
-        padding: 40px 50px;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-        max-height: 650px;
-    }
+        .area-lista {
+            flex: 1;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            max-height: 650px;
+        }
 
-    .cabecalho {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-    }
+        .cabecalho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
 
-    .logo {
-        font-size: 24px;
-        font-weight: 700;
-        color: #f1680d;
-        display: flex;
-        align-items: center;
-    }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #f1680d;
+            display: flex;
+            align-items: center;
+        }
 
-    .logo span:last-child {
-        color: #1e5182;
-        margin-left: 5px;
-    }
+        .logo span:last-child {
+            color: #1e5182;
+            margin-left: 5px;
+        }
 
-    .link-sair {
-        color: #1e5182;
-        text-decoration: none;
-        font-weight: 600;
-        border-bottom: 2px solid #f1680d;
-        font-size: 14px;
-        cursor: pointer;
-    }
+        .link-sair {
+            color: #1e5182;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #f1680d;
+            font-size: 14px;
+            cursor: pointer;
+        }
 
-    .titulo-pagina {
-        font-size: 32px;
-        color: #1e5182;
-        margin-bottom: 30px;
-        text-align: center;
-    }
+        .titulo-pagina {
+            font-size: 32px;
+            color: #1e5182;
+            margin-bottom: 30px;
+            text-align: center;
+        }
 
-    .lista-chamados {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+        .lista-chamados {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    .item-chamado {
-        background-color: #e9ecef;
-        border-radius: 8px;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-left: 6px solid #f1680d;
-        transition: transform 0.2s, background-color 0.2s;
-    }
+        .item-chamado {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 6px solid #f1680d;
+            transition: background-color 0.2s;
+        }
 
-    .item-chamado:hover {
-        transform: scale(1.01);
-        background-color: #e0e3e6;
-    }
+        .item-chamado:hover {
+            background-color: #e0e3e6;
+        }
 
-    .conteudo-texto h3 {
-        color: #000;
-        font-size: 18px;
-        margin-bottom: 5px;
-    }
+        .conteudo-texto h3 {
+            color: #000;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
 
-    .conteudo-texto p {
-        color: #555;
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
+        .conteudo-texto p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
 
-    .detalhes {
-        font-size: 13px;
-        color: #333;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
+        .detalhes {
+            font-size: 13px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
 
-    .detalhes strong {
-        color: #1e5182;
-    }
+        .detalhes strong {
+            color: #1e5182;
+        }
 
-    .select-status {
-        padding: 5px 10px;
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        color: #333;
-        cursor: pointer;
-        background-color: #fff;
-        outline: none;
-    }
+        .select-status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            background-color: #fff;
+            outline: none;
+        }
 
-    .select-status:focus {
-        border-color: #f1680d;
-    }
+        .select-status:focus {
+            border-color: #f1680d;
+        }
 
-    .botao-excluir {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        opacity: 0.6;
-        transition: opacity 0.3s, transform 0.3s;
-    }
+        .botao-excluir {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transition: opacity 0.3s;
+        }
 
-    .botao-excluir:hover {
-        opacity: 1;
-        transform: scale(1.1);
-    }
+        .icone-lixeira {
+            width: 24px;
+            height: 24px;
+            stroke: #888;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke 0.3s;
+        }
 
-    .icone-lixeira {
-        width: 24px;
-        height: 24px;
-        stroke: #333;
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-    }
+        .botao-excluir:hover .icone-lixeira {
+            stroke: #1e5182;
+        }
 
-    .botao-excluir:hover .icone-lixeira {
-        stroke: #f1680d;
-    }
-
-    .imagem-lateral {
-        flex: 1;
-        background-color: #1e5182;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-    }
-</style>
+        .imagem-lateral {
+            flex: 1;
+            background-color: #1e5182;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    </style>
 
 </head>
 <body>
@@ -189,14 +184,13 @@
 
             <div style="display: flex; gap: 15px; align-items: center;">
                 <a href="tecnico.html" style="color: #1e5182; font-weight: 600; text-decoration: none;">
-                    ← Voltar para Usuários
+                    Voltar
                 </a>
-
                 <a onclick="sair()" class="link-sair">SAIR</a>
             </div>
         </div>
 
-        <h1 class="titulo-pagina">Meus Chamados</h1>
+        <h1 class="titulo-pagina">Chamados</h1>
 
         <div class="lista-chamados">
             <p>Carregando chamados...</p>

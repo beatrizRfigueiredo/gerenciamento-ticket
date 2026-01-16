@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Chamado - BBG Telecom</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #f8a57b, #f58e66);
@@ -18,7 +17,6 @@
             min-height: 100vh;
             padding: 20px;
         }
-
         .cartao-chamado {
             background-color: #fff;
             border-radius: 20px;
@@ -29,21 +27,18 @@
             overflow: hidden;
             min-height: 650px;
         }
-
         .area-formulario {
             flex: 1;
             padding: 40px 50px;
             display: flex;
             flex-direction: column;
         }
-
         .cabecalho {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
         }
-
         .logo {
             font-size: 24px;
             font-weight: 700;
@@ -51,38 +46,32 @@
             display: flex;
             align-items: center;
         }
-
         .logo span:last-child { color: #1e5182; margin-left: 5px; }
-
         .links-topo {
             display: flex;
-            gap: 20px; /* Espaço entre Voltar e Sair */
+            gap: 20px;
             align-items: center;
         }
-
         .link-topo {
             color: #1e5182;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
         }
-
         .link-topo:hover { color: #f1680d; }
-
-        .link-sair {
-            border-bottom: 2px solid #f1680d;
-        }
-
+        .link-sair { border-bottom: 2px solid #f1680d; }
         .titulo-pagina {
             font-size: 32px;
             color: #1e5182;
             margin-bottom: 30px;
             text-align: center;
         }
-
         .grupo-campo { position: relative; margin-bottom: 20px; }
-
         .grupo-campo input,
         .grupo-campo select,
         .grupo-campo textarea {
@@ -96,13 +85,11 @@
             outline: none;
             font-family: 'Poppins', sans-serif;
         }
-
         .grupo-campo textarea {
             height: 150px;
             resize: none;
             border-radius: 20px;
         }
-
         .grupo-campo select {
             appearance: none;
             -webkit-appearance: none;
@@ -112,14 +99,6 @@
             background-position: right 20px top 50%;
             background-size: 12px auto;
         }
-
-        .grupo-campo input:focus,
-        .grupo-campo select:focus,
-        .grupo-campo textarea:focus {
-            border-color: #f1680d;
-            background-color: #fff;
-        }
-
         .botao-cadastrar {
             width: 100%;
             padding: 15px;
@@ -133,64 +112,54 @@
             transition: background-color 0.3s;
             margin-top: 10px;
         }
-
         .botao-cadastrar:hover { background-color: #d95c0a; }
-
         .imagem-lateral {
             flex: 1;
             background-color: #1e5182;
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
         }
-
     </style>
 </head>
 <body>
-
 <div class="cartao-chamado">
-
     <div class="area-formulario">
         <div class="cabecalho">
             <div class="logo">
                 <span>BBG</span>
                 <span>TELECOM</span>
             </div>
-
             <div class="links-topo">
-                <a href="cliente-historico.html" class="link-topo">
+                <a href="cliente.html" class="link-topo">
                     <i class="fas fa-arrow-left"></i> Voltar
                 </a>
-
-                <a href="login.html" class="link-topo link-sair">SAIR</a>
+                <a onclick="sair()" class="link-topo link-sair">SAIR</a>
             </div>
         </div>
-
         <h1 class="titulo-pagina">Novo Chamado</h1>
-
-        <form>
+        <form id="form-novo-chamado">
             <div class="grupo-campo">
-                <input type="text" placeholder="Título" required>
+                <input type="text" id="nomecliente" placeholder="Seu Nome Completo" required>
             </div>
-
             <div class="grupo-campo">
-                <textarea placeholder="Descrição" required></textarea>
+                <input type="text" id="titulo" placeholder="Título" required>
             </div>
-
             <div class="grupo-campo">
-                <select required>
+                <textarea id="descricao" placeholder="Descrição" required></textarea>
+            </div>
+            <div class="grupo-campo">
+                <select id="prioridade" required>
                     <option value="" disabled selected>Prioridade</option>
                     <option value="baixa">Baixa</option>
                     <option value="media">Média</option>
                     <option value="alta">Alta</option>
                 </select>
             </div>
-
             <button type="submit" class="botao-cadastrar">Cadastrar</button>
         </form>
     </div>
-
     <div class="imagem-lateral"></div>
-
 </div>
+<script src="script.js"></script>
 </body>
 </html>

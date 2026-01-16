@@ -17,6 +17,7 @@ public class Ticket {
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
+    private String nomeCliente;
     private String prioridade;
     private String status = "ABERTO";
     private LocalDateTime dataCriacao = LocalDateTime.now();
@@ -64,4 +65,12 @@ public class Ticket {
     public void setDataCriacao(LocalDateTime dataCriacao) {
     this.dataCriacao = dataCriacao;
     }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
 }
