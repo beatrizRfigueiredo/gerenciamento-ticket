@@ -110,8 +110,10 @@ async function carregarChamados() {
 
             if (isTecnico) {
                 deveExibir = true;
-            } else if (usuarioLogado && ticket.usuario && ticket.usuario.id == usuarioLogado.id) {
-                deveExibir = true;
+            } else if (usuarioLogado && ticket.usuario) {
+                if (String(ticket.usuario.id) === String(usuarioLogado.id)) {
+                    deveExibir = true;
+                }
             }
 
             if (!deveExibir) return;

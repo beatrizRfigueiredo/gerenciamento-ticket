@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
+import com.example.demo.model.Usuario;
 
 @Data
 @Entity
@@ -21,6 +22,9 @@ public class Ticket {
     private String prioridade;
     private String status = "ABERTO";
     private LocalDateTime dataCriacao = LocalDateTime.now();
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     public Ticket() {}
 
@@ -71,6 +75,13 @@ public class Ticket {
     }
     public void setNomeCliente(String nomecliente) {
         this.nomecliente = nomecliente;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }
